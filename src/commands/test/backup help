@@ -1,0 +1,27 @@
+
+
+
+
+
+const { MessageEmbed, Message } = require('discord.js');
+
+module.exports = class VoteCommand extends BaseCommand {
+  constructor() {
+    super('vote', 'Tools', []);
+  }
+
+    async run (bot, message, args) {
+      let channelID = message.mentions.channels.first();
+      let theDescription = args.slice(1).join(" ");
+
+      const embed = new MessageEmbed()
+        .setColor("RED")
+        .setTitle("POLL")
+        .setDescription(theDescription)
+        .setFooter("Poll created by:"+ message.author.username +'#'+ message.author.discriminator)
+
+        channelID.send(embed)
+
+
+    }
+}
